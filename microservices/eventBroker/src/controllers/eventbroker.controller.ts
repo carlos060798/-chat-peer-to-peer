@@ -10,16 +10,19 @@ import { postConversion } from './convert.controller';
 export const eventBrokerController = async (req: Request, res: Response) => {
     const {  data } = req.body;
     const event = req.body.event.toUpperCase(); 
-    console.log('event', event);
+    console.log({
+        event,
+        data
+    });
 
     try{
     
         if(event === eventEnum.REGISTER_CREATED){
-            const user= await postCreateUser();
+            const user= await postCreateUser(data);
             return res.status(201).send(user);
         }
         if(event === eventEnum.LOGIN_USER){
-            const userLogin = await postLoginUser();
+            const userLogin = await postLoginUser(data);
             return res.status(200).send(userLogin);
         }
         if(event === eventEnum.CONVERSATION_HISTORY){
@@ -28,7 +31,7 @@ export const eventBrokerController = async (req: Request, res: Response) => {
         }
         if(event === eventEnum.CONVERT_CURRENCY){
             console.log('entro a convert');
-            const exchangeConvert= await postConversion();
+            const exchangeConvert= await postConversion(data);
             console.log('exchangeConvert', exchangeConvert);
             return res.status(201).send(exchangeConvert);
         }

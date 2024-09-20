@@ -1,11 +1,14 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import  authRouter from './routes/auth.Route';
+import { conectarBD } from './database/config';
+
 const app = express();
+const port = process.env.PORT ;
 
 dotenv.config();
+conectarBD();
 app.use(express.json());
-const port = process.env.PORT || 3000;
 
 app.use('/auth', authRouter);
 

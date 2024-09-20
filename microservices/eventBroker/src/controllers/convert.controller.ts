@@ -1,4 +1,5 @@
 import axios from "axios" 
+import { IConvert } from "../interfaces/convert.interface";
 
 const convertApi= axios.create({
     baseURL: "http://localhost:3004/currency"
@@ -6,10 +7,10 @@ const convertApi= axios.create({
 })
 
 
-export const postConversion = async () => {
+export const postConversion = async (requestData:IConvert) => {
     console.log('entro a postConversion');
     try {
-        const {data}= await convertApi.post('/convert' );
+        const {data}= await convertApi.post('/convert', requestData);
         return data;
     } catch (error) {
         console.error(error);
