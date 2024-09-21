@@ -19,7 +19,7 @@ export const createUser = async (req: Request, res: Response) => {
     return res.send({ status: 200, user });
 
   } catch (error) {
-    return res.send({ message: ' Error processing request, check server response', error });
+    return res.send({ status:500 ,message: ' Error processing request, check server response', error });
   }
 } 
 
@@ -44,7 +44,7 @@ export const loginUser= async (req: Request, res: Response) => {
 
      }});
   } catch (error) {
-    return res.send({ message: ' Error processing request, check server response', error });
+    return res.send({ status:500, message: ' Error processing request, check server response', error });
   }
 }
 

@@ -1,9 +1,12 @@
-import FormLogin from "../components/formlogin";
+import FormLogin from '../components/Formlogin';
+
 
 function LoginPage() {
     return (
         <div>
             <FormLogin />
+           
+           
         </div>
     );
 }

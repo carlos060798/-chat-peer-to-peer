@@ -17,8 +17,8 @@ import { TypeOrmModule } from '@nestjs/typeorm'; //  configuracion de la base de
     database: process.env.DB_NAME,
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    autoLoadEntities: true, // models will be loaded automatically (you don't have to explicitly define the entities: [] array)
-    synchronize: true,  //  synchronize the database with the entities every time the application starts
+    autoLoadEntities: true, 
+    synchronize: true,  
    
   
   }), 

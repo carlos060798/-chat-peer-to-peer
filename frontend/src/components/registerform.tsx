@@ -1,9 +1,50 @@
-import{Link} from 'react-router-dom';
-function RegisterForm () {
+import{Link, useNavigate} from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import ErrorMessage from "../components/Error";
+import {  IUser } from "../interfaces/user.interface";
+import { useMutation } from "@tanstack/react-query";
+import { createAcount } from '../api/authApi';
+import { toast } from 'react-toastify';
 
-    const handleSubmit = (data: any) => {
-        console.log(data);
-    };
+function RegisterForm () {
+  
+  
+  const initialValues:   IUser= {
+    name: "",
+    email: "",
+    password: "",
+   
+  };
+  const navigate=useNavigate()
+
+  const {
+    register,
+   
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<  IUser>({ defaultValues: initialValues });
+
+ 
+
+  const {mutate,} = useMutation({
+    mutationFn: createAcount,
+    onError: (error) => {
+        toast.error('Usuario no creado')
+        console.log(error)
+    },
+    onSuccess: () => {
+      toast.success('Usuario creado correctamente')
+      reset()
+      navigate( "/login")
+    },
+  
+  
+  })
+
+  const handleRegister = (formData:IUser) => {
+    mutate(formData)
+  };
    
 
     return (
@@ -11,7 +52,7 @@ function RegisterForm () {
           <div className="d-flex justify-content-center align-items-center vh-100">
           <div className="card p-4" style={{ width: '100%', maxWidth: '400px' }}>
             <h3 className="text-center mb-4">Registrase</h3>
-            <form onSubmit={handleSubmit}>
+            <form  onSubmit={handleSubmit(handleRegister)}>
             <div className="mb-3">
                 <label htmlFor="name" className="form-label">Nombre</label>
                 <input
@@ -19,8 +60,11 @@ function RegisterForm () {
                   className="form-control"
                   id="name"
                   placeholder="Introduce tu nombre"
-                  required
+                  {...register('name', {
+                    required: 'El Nombre de usuario es obligatorio',
+                  })}
                 />
+                {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
                 </div>
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">Correo Electrónico</label>
@@ -29,18 +73,35 @@ function RegisterForm () {
                   className="form-control"
                   id="email"
                   placeholder="Introduce tu correo"
-                  required
+                  {...register('email', {
+                    required: 'El Email de registro es obligatorio',
+                    pattern: {
+                      value: /\S+@\S+\.\S+/,
+                      message: 'E-mail no válido',
+                    },
+                  })}
                 />
+                {errors.email && (
+                  <ErrorMessage>{errors.email.message}</ErrorMessage>
+                )}
               </div>
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">Contraseña</label>
                 <input
                   type="password"
                   className="form-control"
-                  id="password"
-                  placeholder="Introduce tu contraseña"
-                  required
+                 
+                  {...register('password', {
+                    required: 'El Password es obligatorio',
+                    minLength: {
+                      value: 8,
+                      message: 'El Password debe ser mínimo de 8 caracteres',
+                    },
+                  })}
                 />
+                {errors.password && (
+                  <ErrorMessage>{errors.password.message}</ErrorMessage>
+                )}
               </div>
               <button type="submit" className="btn btn-success w-100">Registrar</button>
             </form>
