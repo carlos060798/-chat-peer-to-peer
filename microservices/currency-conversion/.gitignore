@@ -1,5 +1,12 @@
-# compiled output
-/dist
+# Ignorar la carpeta node_modules
 /node_modules
-/build 
+
+# Ignorar archivos compilados
+/dist
+/build
+
+# Ignorar archivo de variables de entorno
 .env
+
+# Ignorar otros archivos de configuración
+.DS_Store
