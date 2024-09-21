@@ -14,7 +14,8 @@ export const createAcount = async (data:IUser) => {
       event,
       data
     });
-    return response.data;
+   
+    return response.data.message;
   } catch (error) {
     const err = error as AxiosError;
     return err.response?.data;
@@ -30,7 +31,8 @@ export const loginUser = async (data: IUserLogin ) => {
       event,
       data
     });
-    return response.data;
+    localStorage.setItem('userid', response.data.user.id);
+    return response.data.message;
   } catch (error) {
     const err = error as AxiosError;
     return err.response?.data;

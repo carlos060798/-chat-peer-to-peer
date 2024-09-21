@@ -1,5 +1,16 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 export function NavbarApp() {
+  const navigate = useNavigate()
+  const logaut = () => {
+    localStorage.removeItem('userid')
+    localStorage.removeItem('chatMessages')
+    toast.success('Sesión cerrada')
+    navigate('/')
+     
+  }
     return (
         <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#25D366' }}>
         <div className="container">
@@ -13,7 +24,13 @@ export function NavbarApp() {
                 <Link className="nav-link text-white" to="/chat">chat</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/">sing out</Link>
+              <button 
+                            onClick={logaut}
+                            className="
+                            btn btn-danger
+                            ">
+                            Sign out
+                            </button>
               </li>
              
             </ul>
