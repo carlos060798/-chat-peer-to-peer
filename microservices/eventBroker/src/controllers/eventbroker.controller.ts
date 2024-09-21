@@ -26,7 +26,8 @@ export const eventBrokerController = async (req: Request, res: Response) => {
             return res.status(200).send(userLogin);
         }
         if(event === eventEnum.CONVERSATION_HISTORY){
-            const response = await getAllhistory();
+            
+            const response = await getAllhistory(data.userid);
             return res.status(200).send(response);
         }
         if(event === eventEnum.CONVERT_CURRENCY){
@@ -36,7 +37,7 @@ export const eventBrokerController = async (req: Request, res: Response) => {
             return res.status(201).send(exchangeConvert);
         }
         if(event === eventEnum.REGISTER_CONVERT){
-            const response = await postCreateregister();
+            const response = await postCreateregister(data);
             return res.status(201).send(response);
         }
    
