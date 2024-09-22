@@ -1,6 +1,8 @@
 # Servicio de Autenticación
-Este servicio está construido utilizando Node.js con TypeScript y emplea MongoDB como motor de base de datos. Se sigue una arquitectura basada en el modelo de controlador, lo que permite una estructura clara y mantenible.
+Este servicio está construido utilizando Node.js con TypeScript y emplea MongoDB como motor de base de datos. Se sigue una arquitectura basada en el patron MVC, lo que permite una estructura clara y mantenible.
 
+# Comando para ejecutar el servidor 
+  npm run dev
 
 # variables de entorno 
 ## Puerto del servicio

@@ -1,7 +1,8 @@
 
 # Servicio de API Gateway
 Este servicio está construido utilizando Node.js con TypeScript y sigue una arquitectura basada en el modelo de controlador, lo que permite una estructura clara y mantenible.
-
+# Comando para ejecutar el servidor 
+  npm run dev
 # Variables de Entorno
 ## Puerto del Servicio: PORT
 ## URL del Frontend: URL_FRONTEND

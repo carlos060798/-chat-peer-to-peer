@@ -23,7 +23,7 @@ Este servicio de intermediación gestiona la comunicación entre los diferentes 
 El servicio de autenticación maneja el registro de usuarios y el inicio de sesión dentro de la aplicación. Asegura que solo los usuarios autorizados tengan acceso a los recursos y servicios.
 
 ### Currency Conversion Service
-Este servicio consume una API externa para la conversión de monedas. Utiliza la siguiente API: [ExchangeRate API](https://v6.exchangerate-api.com/v6/), permitiendo a los usuarios realizar conversiones de divisas en tiempo real.
+Este servicio consume una API externa para la conversión de monedas. Utiliza la siguiente API: [ExchangeRate API](https://www.exchangerate-api.com/), permitiendo a los usuarios realizar conversiones de divisas en tiempo real.
 
 ### Register Logs Service
 El servicio de registro almacena en la base de datos todas las conversiones realizadas. Esto permite llevar un control y auditoría de las operaciones de conversión de monedas en la aplicación.

@@ -1,7 +1,6 @@
 
 import { useForm } from "react-hook-form";
-import { useMutation ,useQueryClient } from "@tanstack/react-query";
-
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ICurrencyConversion } from '../interfaces/convert.interface';
 import { Convercurrency } from '../api/convertApi';
 import { useMessage } from '../helpers/mensaje.helper';
@@ -19,14 +18,15 @@ function Chat() {
   });
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
+
     mutationFn: Convercurrency,
     onError: () => {
-       'Error en la conversión'
+      alert('Error al convertir la moneda')
     },
     onSuccess: (data: any) => {
       queryClient.invalidateQueries({ queryKey: ["logs"] });
       dataMenssages(data);
-    
+
       reset();
     }
   });

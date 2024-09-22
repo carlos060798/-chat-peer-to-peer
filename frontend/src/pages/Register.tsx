@@ -1,10 +1,10 @@
 import RegisterForm from "../components/registerform";
 
-function RegisterPage(){
+function RegisterPage() {
     return (
         <div>
             <RegisterForm />
-           
+
         </div>
     )
 }

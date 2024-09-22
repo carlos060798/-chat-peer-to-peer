@@ -3,7 +3,8 @@
  function PageNotFound() {
     return (
         <div>
-            <h1>Page Not Found</h1>
+            <h1>404</h1>
+            <h2>Page not found</h2>
         </div>
     )
 }

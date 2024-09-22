@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+
 import ConversionHistory from '../components/SidePanel';
 import Chat from '../components/chatform';
 
 
-const ChatPage: React.FC = () => {
- 
+function ChatPage() {
+
 
   return (
     <div className="container-fluid vh-100 d-flex">
-     
+
       <ConversionHistory />
 
-      <Chat/>
+      <Chat />
     </div>
   );
 };
